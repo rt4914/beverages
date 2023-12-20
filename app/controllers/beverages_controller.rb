@@ -3,7 +3,7 @@ class BeveragesController < ApplicationController
 
   # GET /beverages or /beverages.json
   def index
-    @beverages = Beverage.all
+    @beverages = Beverage.order(:name)
   end
 
   # GET /beverages/1 or /beverages/1.json

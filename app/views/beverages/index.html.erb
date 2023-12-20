@@ -1,14 +1,29 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Beverages</h1>
-
-<div id="beverages">
-  <% @beverages.each do |beverage| %>
-    <%= render beverage %>
-    <p>
-      <%= link_to "Show this beverage", beverage %>
-    </p>
-  <% end %>
+<div class="d-flex justify-content-between align-items-center">
+  <h1 class="display-6">Beverages</h1>
+  <%= link_to "Add beverage", new_beverage_path, class:"btn btn-outline-success" %>
 </div>
 
-<%= link_to "New beverage", new_beverage_path %>
+<div id="beverages" class="mt-2">
+  <table class="table table-dark table-striped">
+    <thead>
+      <th scope="col">#</th>
+      <th scope="col">Beverage</th>
+      <th scope="col">Category</th>
+      <th scope="col">Packaging</th>
+      <th scope="col">M.R.P.</th>
+    </thead>
+    <tbody>
+      <% counter = 1 %>
+      <% @beverages.each do |beverage| %>
+        <tr>
+          <th scope="row"><%= counter %></th>
+          <td><%= link_to beverage.name, beverage, class:"link-light link-underline link-underline-opacity-0" %></td>
+          <td><%= beverage.category %></td>
+          <td><%= beverage.packaging %></td>
+          <td>₹ <%= beverage.price %></td>
+        </tr>
+        <% counter += 1 %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

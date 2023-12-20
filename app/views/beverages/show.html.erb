@@ -1,10 +1,28 @@
-<p style="color: green"><%= notice %></p>
+<div class="p-5 mb-4 bg-body-tertiary rounded-3">
+  <div id="<%= @beverage %>" class="container-fluid py-5">
+    <p class="display-5 fw-bold">
+      <%= @beverage.name %>
+    </p>
 
-<%= render @beverage %>
+    <p class="col-md-8 fs-4">
+      <%= @beverage.category %>
+    </p>
+
+    <p class="col-md-8 fs-4">
+      <%= @beverage.packaging %>
+    </p>
+
+    <p class="col-md-8 fs-4">
+      ₹ <%= @beverage.price %>
+    </p>
+
+  </div>
+</div>
+
 
 <div>
-  <%= link_to "Edit this beverage", edit_beverage_path(@beverage) %> |
-  <%= link_to "Back to beverages", beverages_path %>
+  <%= link_to "Edit this beverage", edit_beverage_path(@beverage), class:"mt-4 btn btn-primary" %>
+  <%= link_to "Back to beverages", beverages_path, class:"mt-4 btn btn-secondary" %>
 
-  <%= button_to "Destroy this beverage", @beverage, method: :delete %>
+  <%= button_to "Destroy this beverage", @beverage, method: :delete, class:"mt-4 btn btn-danger" %>
 </div>
