@@ -19,7 +19,11 @@
       <% @beverages.each do |beverage| %>
         <tr>
           <th scope="row"><%= counter %></th>
-          <td><%= link_to beverage.name, beverage, class:"link-dark link-underline link-underline-opacity-0" %></td>
+          <% if user_signed_in? %>
+            <td><%= link_to beverage.name, beverage, class:"link-dark link-underline link-underline-opacity-0" %></td>
+          <% else %>
+            <td><%= beverage.name%></td>
+          <% end %>
           <td><%= beverage.category %></td>
           <td><%= beverage.packaging %></td>
           <td>₹ <%= beverage.price %></td>
