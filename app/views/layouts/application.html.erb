@@ -14,6 +14,15 @@
   <body class="bg-white">
     <% if user_signed_in? %>
       <%= render 'navbar/navbar' %>
+    <% else %>
+      <nav class="shadow-sm p-3 mb-5 bg-body-tertiary rounded navbar navbar-expand-lg" style="background-color: #e5e5e5;">
+        <div class="container container-fluid d-flex justify-content-center">
+          <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="<%= asset_path('logo.png') %>" alt="Logo" height="120">
+            <span class="display-1 ms-4">Golmaal Bar</span>
+          </a>
+        </div>
+      </nav>
     <% end %>
     <div class="container">
       <br/>
