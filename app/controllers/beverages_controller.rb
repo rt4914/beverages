@@ -25,7 +25,6 @@ class BeveragesController < ApplicationController
 
     respond_to do |format|
       if @beverage.save
-        format.html { redirect_to beverage_url(@beverage), notice: "Beverage was successfully created." }
         format.json { render :show, status: :created, location: @beverage }
       else
         format.html { render :new, status: :unprocessable_entity }
