@@ -3,7 +3,7 @@ class CreateBeverages < ActiveRecord::Migration[7.0]
     create_table :beverages do |t|
       t.string :name
       t.string :category
-      t.string :packaging
+      t.string :quantity
       t.integer :price
 
       t.timestamps

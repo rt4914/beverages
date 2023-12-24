@@ -17,7 +17,7 @@ class BeveragesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create beverage" do
     assert_difference("Beverage.count") do
-      post beverages_url, params: { beverage: { category: @beverage.category, name: @beverage.name, packaging: @beverage.packaging, price: @beverage.price } }
+      post beverages_url, params: { beverage: { category: @beverage.category, name: @beverage.name, quantity: @beverage.quantity, price: @beverage.price } }
     end
 
     assert_redirected_to beverage_url(Beverage.last)
@@ -34,7 +34,7 @@ class BeveragesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update beverage" do
-    patch beverage_url(@beverage), params: { beverage: { category: @beverage.category, name: @beverage.name, packaging: @beverage.packaging, price: @beverage.price } }
+    patch beverage_url(@beverage), params: { beverage: { category: @beverage.category, name: @beverage.name, quantity: @beverage.quantity, price: @beverage.price } }
     assert_redirected_to beverage_url(@beverage)
   end
 

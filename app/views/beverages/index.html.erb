@@ -11,7 +11,7 @@
       <th scope="col">#</th>
       <th scope="col">Beverage</th>
       <th scope="col">Category</th>
-      <th scope="col">Packaging</th>
+      <th scope="col">Quantity</th>
       <th scope="col">M.R.P.</th>
     </thead>
     <tbody>
@@ -25,7 +25,7 @@
             <td><%= beverage.name%></td>
           <% end %>
           <td><%= beverage.category %></td>
-          <td><%= beverage.packaging %></td>
+          <td><%= beverage.quantity %></td>
           <td>₹ <%= beverage.price %></td>
         </tr>
         <% counter += 1 %>

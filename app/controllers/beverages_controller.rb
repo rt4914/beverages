@@ -65,6 +65,6 @@ class BeveragesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def beverage_params
-      params.require(:beverage).permit(:name, :category, :packaging, :price)
+      params.require(:beverage).permit(:name, :category, :quantity, :price)
     end
 end

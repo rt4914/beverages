@@ -16,7 +16,7 @@ class BeveragesTest < ApplicationSystemTestCase
 
     fill_in "Category", with: @beverage.category
     fill_in "Name", with: @beverage.name
-    fill_in "Packaging", with: @beverage.packaging
+    fill_in "Quantity", with: @beverage.quantity
     fill_in "Price", with: @beverage.price
     click_on "Create Beverage"
 
@@ -30,7 +30,7 @@ class BeveragesTest < ApplicationSystemTestCase
 
     fill_in "Category", with: @beverage.category
     fill_in "Name", with: @beverage.name
-    fill_in "Packaging", with: @beverage.packaging
+    fill_in "Quantity", with: @beverage.quantity
     fill_in "Price", with: @beverage.price
     click_on "Update Beverage"
 
