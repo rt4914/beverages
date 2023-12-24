@@ -1,35 +1,33 @@
-<div class="d-flex justify-content-between align-items-center">
-  <h1 class="display-6">Beverages</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="display-6 fw-bold">Beverages</h1>
   <% if user_signed_in? %>
     <%= link_to "Add beverage", new_beverage_path, class:"btn btn-outline-success" %>
   <% end %>
 </div>
 
-<div id="beverages" class="mt-2">
-  <table class="table table-striped table-hover">
-    <thead>
-      <th scope="col">#</th>
-      <th scope="col">Beverage</th>
-      <th scope="col">Category</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">M.R.P.</th>
-    </thead>
-    <tbody>
-      <% counter = 1 %>
-      <% @beverages.each do |beverage| %>
-        <tr>
-          <th scope="row"><%= counter %></th>
-          <% if user_signed_in? %>
-            <td><%= link_to beverage.name, beverage, class:"link-dark link-underline link-underline-opacity-0" %></td>
-          <% else %>
-            <td><%= beverage.name%></td>
-          <% end %>
-          <td><%= beverage.category_id %></td>
-          <td><%= beverage.quantity %></td>
-          <td>₹ <%= beverage.price %></td>
-        </tr>
-        <% counter += 1 %>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<% @categories.each do |category| %>
+  <div class="mt-3 border rounded-1">
+    <p style="background-color: #F3F1EF;" class="display-6 fs-4 fw-medium mb-0 p-4" data-bs-toggle="collapse" data-bs-target="#<%= category.name %>" aria-expanded="false" aria-controls="<%= category.name %>">
+      <%= category.name %>
+    </p>
+    <div class="collapse bg-white px-4" id="<%= category.name %>">
+      <div>
+        <table class="w-100">
+          <tbody>
+            <% category.beverages.each do |beverage| %>
+              <tr>
+                <% if user_signed_in? %>
+                  <td class="py-2 fw-medium text-start"><%= link_to beverage.name, beverage, class:"link-dark link-underline link-underline-opacity-0" %></td>
+                <% else %>
+                  <td class="py-2 fw-medium text-start"><%= beverage.name %></td>
+                <% end %>
+                <td class="py-2 fw-medium text-center"><%= beverage.quantity %></td>
+                <td class="py-2 fw-medium text-end">₹<%= beverage.price %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>

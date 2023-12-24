@@ -4,6 +4,7 @@ class BeveragesController < ApplicationController
 
   # GET /beverages or /beverages.json
   def index
+    @categories = Category.order(:name).includes(:beverages)
     @beverages = Beverage.order(:name)
   end
 
