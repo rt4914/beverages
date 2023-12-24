@@ -5,7 +5,11 @@
     </p>
 
     <p class="col-md-8 fs-4">
-      <%= @beverage.category %>
+      <% if @beverage.category.present? %>
+        <%= @beverage.category.name %>
+      <% else %>
+        No Category Assigned
+      <% end %>
     </p>
 
     <p class="col-md-8 fs-4">

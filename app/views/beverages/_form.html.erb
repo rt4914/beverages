@@ -18,7 +18,12 @@
 
   <div>
     <% form.label :category, style: "display: block" %>
-    <%= form.text_field :category, class:"form-control mt-2", placeholder:"Category" %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, { include_blank: "Select Category" }, { class: "form-control mt-2" } %>
+    <% if form.object.errors[:category_id].any? %>
+      <div class="alert alert-danger mt-2">
+        <%= form.object.errors[:category_id].join(", ") %>
+      </div>
+    <% end %>
   </div>
 
   <div>

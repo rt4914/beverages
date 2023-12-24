@@ -23,13 +23,19 @@ class BeveragesController < ApplicationController
   # POST /beverages or /beverages.json
   def create
     @beverage = Beverage.new(beverage_params)
-
-    respond_to do |format|
-      if @beverage.save
-        format.json { render :show, status: :created, location: @beverage }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @beverage.errors, status: :unprocessable_entity }
+  
+    if @beverage.category_id.blank?
+      flash[:alert] = "Category must be selected"
+      render :new
+    else
+      respond_to do |format|
+        if @beverage.save
+          format.html { redirect_to @beverage, notice: "Beverage was successfully created." }
+          format.json { render :show, status: :created, location: @beverage }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @beverage.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -65,6 +71,6 @@ class BeveragesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def beverage_params
-      params.require(:beverage).permit(:name, :category, :quantity, :price)
+      params.require(:beverage).permit(:name, :category_id, :quantity, :price)
     end
 end
